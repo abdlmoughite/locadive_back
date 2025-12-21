@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Support;
+use App\Models\Preparation;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 
@@ -24,6 +25,10 @@ class Agency extends Model
     public function clients()
     {
         return $this->hasMany(Client::class);
+    }
+    public function preparations()
+    {
+        return $this->hasMany(Preparation::class);
     }
 
     // Une agence possède plusieurs voitures

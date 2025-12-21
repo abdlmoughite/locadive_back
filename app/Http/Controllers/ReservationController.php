@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reservation;
@@ -34,6 +34,7 @@ class ReservationController extends Controller
             'contrat'     => 'nullable|string',
             'status'      => 'required|string',
             'prix_total'  => 'required|numeric',
+            'agency_id'  => 'required|exists:agencies,id',
         ]);
 
         $reservation = Reservation::create($request->all());
@@ -42,6 +43,15 @@ class ReservationController extends Controller
             'message'     => 'Reservation created successfully',
             'reservation' => $reservation
         ], 201);
+    }
+
+
+    public function getreservation($idAgency)
+    {
+        return response()->json(
+            Reservation::where('agency_id', $idAgency)->get(),
+            200
+        );
     }
 
     /**

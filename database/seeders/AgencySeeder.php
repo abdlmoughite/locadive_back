@@ -17,8 +17,15 @@ class AgencySeeder extends Seeder
             'nom' => 'LocaDrive Agency',
             'adresse' => 'Casablanca, Morocco',
             'tele' => '0600000000',
-            'email' => 'agency@locadrive.com',
-            'password' => bcrypt('password'),
+            'email' => 'agency@agency.com',
+            'password' => bcrypt('agency123'),
+        ]);
+        Agency::create([
+            'nom' => 'koala',
+            'adresse' => 'Casablanca, Morocco',
+            'tele' => '0600000000',
+            'email' => 'agency2@agency.com',
+            'password' => bcrypt('agency123'),
         ]);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Client;
@@ -11,13 +11,22 @@ class ClientController extends Controller
     /**
      * Display all clients
      */
-    public function index()
+    public function index($id)
     {
         return response()->json(
-            Client::with(['agency', 'blacklist'])->get(),
+            Client::where('agency_id' , $id )->get(),
             200
         );
     }
+
+    public function getByAgency($id)
+{
+    return response()->json(
+        Client::where('agency_id', $id)->get(),
+        200
+    );
+}
+
 
     /**
      * Store a new client
@@ -33,6 +42,10 @@ class ClientController extends Controller
             'tele'       => 'required|string',
             'img_cin'    => 'nullable|string',
             'img_permis' => 'nullable|string',
+            'scoring'    => 'nullable|integer',
+            'face2_prime'=> 'nullable|string',
+            'face2_cin'  => 'nullable|string',
+            'comment_scoring' => 'nullable|string',
         ]);
 
         $client = Client::create($request->all());

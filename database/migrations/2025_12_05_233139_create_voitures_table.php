@@ -25,7 +25,7 @@ return new class extends Migration
         $table->string('assurance');
         $table->string('carte_grise');
         $table->string('img')->nullable();
-        $table->string('status');
+        $table->string('status')->default('Disponible');
         $table->integer('km_debut');
         $table->timestamps();
     });

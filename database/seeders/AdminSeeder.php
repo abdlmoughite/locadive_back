@@ -16,8 +16,8 @@ class AdminSeeder extends Seeder
         Admin::create([
             'nom' => 'Super',
             'prenom' => 'Admin',
-            'email' => 'admin@locadrive.com',
-            'password' => bcrypt('password'),
+            'email' => 'admin@admin.com',
+            'password' => bcrypt('admin123'),
         ]);
     }
 }

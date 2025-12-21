@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Client extends Model
 {
     protected $fillable = [
-        'agency_id', 'nom', 'prenom',        'cin', 'permis',
-        'img_cin', 'img_permis', 'tele'
+        'agency_id', 'nom', 'prenom','cin', 'permis',
+        'img_cin', 'img_permis', 'tele', 'scoring', 'face2_prime', 'face2_cin', 'comment_scoring'
     ];
 
     public function agency()

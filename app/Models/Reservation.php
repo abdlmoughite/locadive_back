@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    protected $table = 'reservations';
     protected $fillable = [
         'client_id', 'voiture_id', 'date_debut', 'date_fin',
-        'img_etat', 'prix', 'contrat', 'status', 'prix_total'
+        'img_etat', 'prix', 'contrat', 'status', 'agency_id', 'prix_total'
     ];
 
     public function client()

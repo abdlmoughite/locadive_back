@@ -19,8 +19,8 @@ class SupportSeeder extends Seeder
             'prenom' => 'User',
             'cin' => 'X123456',
             'salaire' => 4000,
-            'email' => 'support@locadrive.com',
-            'password' => bcrypt('password'),
+            'email' => 'support@support.com',
+            'password' => bcrypt('support123'),
         ]);
     }
 }

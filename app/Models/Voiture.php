@@ -9,7 +9,7 @@ class Voiture extends Model
     protected $fillable = [
         'agency_id', 'model', 'annee', 'etat', 'matricule',
         'color', 'description', 'options', 'prix_jour',
-        'assurance', 'carte_grise', 'img', 'status', 'km_debut'
+        'assurance', 'carte_grise', 'img', 'status', 'km_debut',
     ];
 
     public function agency()

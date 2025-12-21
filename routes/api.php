@@ -3,16 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Api\AdminController;
-use App\Http\Controllers\Api\AgencyController;
-use App\Http\Controllers\Api\ClientController;
-use App\Http\Controllers\Api\VoitureController;
-use App\Http\Controllers\Api\BlacklistController;
-use App\Http\Controllers\Api\ReservationController;
-use App\Http\Controllers\Api\DepenseController;
-use App\Http\Controllers\Api\PreparationController;
-use App\Http\Controllers\Api\ReservationFinController;
-use App\Http\Controllers\Api\SupportController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AgencyController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\VoitureController;
+use App\Http\Controllers\BlacklistController;
+use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\DepenseController;
+use App\Http\Controllers\PreparationController;
+use App\Http\Controllers\ReservationFinController;
+use App\Http\Controllers\SupportController;
 
 
 // ---------------------------
@@ -42,12 +42,17 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Clients
     Route::apiResource('clients', ClientController::class);
+    Route::get('/clients/agency/{id}', [ClientController::class, 'getByAgency']);
+
 
     // Cars
     Route::apiResource('voitures', VoitureController::class);
+    Route::get('/voitures/agency/{id}', [VoitureController::class, 'getByAgency']);
+
 
     // Reservations
     Route::apiResource('reservations', ReservationController::class);
+    Route::get('/reservations/agency/{idAgency}', [ReservationController::class , 'getreservation']) ;
 
     // Reservation Final (km, dommages…)
     Route::apiResource('reservation-fins', ReservationFinController::class);
@@ -60,4 +65,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Préparations
     Route::apiResource('preparations', PreparationController::class);
+    Route::get('/preparations/agency/{idAgency}', [PreparationController::class , 'getpreparations']);
 });

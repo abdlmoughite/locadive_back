@@ -16,6 +16,7 @@ class ReservationSeeder extends Seeder
         Reservation::create([
             'client_id' => 1,
             'voiture_id' => 1,
+            'agency_id' => 1,
             'date_debut' => '2024-01-01',
             'date_fin' => '2024-01-05',
             'img_etat' => null,

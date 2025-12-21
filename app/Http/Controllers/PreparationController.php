@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Preparation;
@@ -18,7 +18,16 @@ class PreparationController extends Controller
             200
         );
     }
+ 
+    public function getpreparations($id)
+{
+    return response()->json(
+        Preparation::where('agency_id', $id)->get(),
+        200
+    );
+}
 
+    
     /**
      * Store a new preparation
      */
@@ -29,7 +38,10 @@ class PreparationController extends Controller
             'type'        => 'required|string',
             'date_debut'  => 'required|date',
             'date_fin'    => 'nullable|date',
-            'commentaire' => 'nullable|string'
+            'commentaire' => 'nullable|string',
+            'prix'        => 'nullable|numeric',
+            'facture'     => 'nullable|string',
+            'agency_id'   => 'required|exists:agencies,id'
         ]);
 
         $preparation = Preparation::create($request->all());
@@ -69,7 +81,10 @@ class PreparationController extends Controller
             'type'        => 'sometimes|string',
             'date_debut'  => 'sometimes|date',
             'date_fin'    => 'sometimes|date',
-            'commentaire' => 'sometimes|string'
+            'commentaire' => 'sometimes|string',
+            'prix'        => 'sometimes|numeric',
+            'facture'     => 'sometimes|string',
+            'agency_id'   => 'sometimes|exists:agencies,id'
         ]);
 
         $preparation->update($request->all());

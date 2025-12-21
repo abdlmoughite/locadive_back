@@ -22,6 +22,10 @@ class ClientSeeder extends Seeder
             'img_cin' => null,
             'img_permis' => null,
             'tele' => '0650000000',
+            'scoring'=>15,
+            'face2_prime'=>null,
+            'face2_cin'=>null,
+            'comment_scoring'=>'kadab o kijri ',
         ]);
     }
 }

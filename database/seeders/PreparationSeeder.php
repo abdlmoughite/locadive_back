@@ -15,6 +15,7 @@ class PreparationSeeder extends Seeder
     {
         Preparation::create([
             'voiture_id' => 1,
+            'agency_id' => 1,
             'type' => 'Nettoyage',
             'date_debut' => now(),
             'date_fin' => now()->addDay(),

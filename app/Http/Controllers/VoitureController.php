@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Voiture;
@@ -18,6 +18,14 @@ class VoitureController extends Controller
             200
         );
     }
+
+        public function getByAgency($id)
+{
+    return response()->json(
+        Voiture::where('agency_id', $id)->get(),
+        200
+    );
+}
 
     /**
      * Store a new car
