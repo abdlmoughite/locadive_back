@@ -20,7 +20,7 @@ return new class extends Migration
         $table->string('img_etat')->nullable();
         $table->decimal('prix');
         $table->string('contrat')->nullable();
-        $table->string('status');
+        $table->string('status')->default('en_cours');
         $table->decimal('prix_total');
         $table->timestamps();
     });
