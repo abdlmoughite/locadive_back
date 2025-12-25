@@ -35,6 +35,8 @@ class ReservationController extends Controller
             'status'      => 'required|string',
             'prix_total'  => 'required|numeric',
             'agency_id'  => 'required|exists:agencies,id',
+            'scoring'     => 'nullable|numeric',
+            'comment_scoring' => 'nullable|string',
         ]);
 
         $reservation = Reservation::create($request->all());
@@ -57,17 +59,21 @@ class ReservationController extends Controller
     /**
      * Display one reservation
      */
-    public function show($id)
-    {
-        $reservation = Reservation::with(['client', 'voiture', 'reservationFin'])
-            ->find($id);
+public function show($id)
+{
+    $reservations = Reservation::with(['client', 'voiture', 'reservationFin'])
+        ->where('client_id', $id)
+        ->get();
 
-        if (!$reservation) {
-            return response()->json(['error' => 'Reservation not found'], 404);
-        }
-
-        return response()->json($reservation, 200);
+    if ($reservations->isEmpty()) {
+        return response()->json([
+            'error' => 'No reservations found for this client'
+        ], 404);
     }
+
+    return response()->json($reservations, 200);
+}
+
 
     /**
      * Update a reservation
@@ -88,6 +94,8 @@ class ReservationController extends Controller
             'contrat'     => 'sometimes|string',
             'status'      => 'sometimes|string',
             'prix_total'  => 'sometimes|numeric',
+            'scoring'     => 'sometimes|numeric',
+            'comment_scoring' => 'sometimes|string',
         ]);
 
         $reservation->update($request->all());

@@ -62,6 +62,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Dépenses
     Route::apiResource('depenses', DepenseController::class);
+    Route::get('/depenses/agency/{idAgency}', [DepenseController::class , 'getdepenses']) ;
 
     // Préparations
     Route::apiResource('preparations', PreparationController::class);

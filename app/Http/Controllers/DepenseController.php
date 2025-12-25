@@ -39,6 +39,12 @@ class DepenseController extends Controller
             'depense' => $depense
         ], 201);
     }
+    public function getdepenses($idAgency)
+    {
+        $depenses = Depense::where('agency_id', $idAgency)->with('agency')->get();
+
+        return response()->json($depenses, 200);
+    }
 
     /**
      * Show a specific depense

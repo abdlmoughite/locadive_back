@@ -59,17 +59,18 @@ class ClientController extends Controller
     /**
      * Display one client
      */
-    public function show($id)
-    {
-        $client = Client::with(['agency', 'blacklist', 'reservations'])
-            ->find($id);
+        public function show($cin)
+        {
+            $client = Client::where('cin', $cin)->first();
 
-        if (!$client) {
-            return response()->json(['error' => 'Client not found'], 404);
+            if (!$client) {
+                return response()->json([
+                    'error' => 'Client not found'
+                ], 404);
+            }
+
+            return response()->json($client, 200);
         }
-
-        return response()->json($client, 200);
-    }
 
     /**
      * Update client
